@@ -4,6 +4,8 @@
 
 Loads a graph and computes group degree centralization measure.
 
+Matjaz Krnc and Riste Skrekovski. 2015. Group centralization of network indices. Discrete Appl. Math. 186, C (May 2015), 147-157. 
+
 /////////////////////////////////////////////////////////////////////////////
 Parameters:
 
@@ -12,5 +14,3 @@ Parameters:
 
 /////////////////////////////////////////////////////////////////////////////
 Usage:
-
-gcentralization.exe -i:graph.txt -o:out.txt
