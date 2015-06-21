@@ -1,4 +1,14 @@
 ========================================================================
+  Group degree centralization extension for SNAP. 
+========================================================================
+
+Extension:
+  snap-core/gcentr.cpp
+  snap-core/gcentr.h
+Example
+  examples/gcentralization/gcentralization
+
+========================================================================
   SNAP : Stanford Network Analysis Platform
 	http://snap.stanford.edu
 ========================================================================
@@ -21,14 +31,10 @@ Directory structure:
         experimental SNAP components, still in development
   examples:
         small sample applications that demonstrate SNAP functionality
-  tutorials:
-        simple programs, demonstrating use of various classes
   glib-core: 
         STL-like library that implements basic data structures, like vectors
         (TVec), hash-tables (THash) and strings (TStr), provides
         serialization and so on
-  test:
-        unit tests for various classes
   doxygen:
         SNAP reference manuals
 
@@ -41,9 +47,8 @@ working directory.
 
 /////////////////////////////////////////////////////////////////////////////
 
-Example applications for advanced SNAP functionality are available
-in the examples directory and described at:
-  http://snap.stanford.edu/snap/description.html.
+This project contains an example of finding a group with maxima group 
+centralzation.
 
 To compile from the command line, execute:
   make all   # compiles SNAP and all sample applications
@@ -239,6 +244,8 @@ snap-core:
   gio.h : Graph input output. Methods for loading and saving various textual
         and XML based graph formats: Pajek, ORA, DynNet, GraphML (GML), 
         Matlab.
+  gcentr.h : Implements approximative algorithm for group degree 
+             centralization
   graph.h : Implements graph types TUNGraph, TNGraph and TNEGraph.
   gstat.h : Computes many structural properties of static and evolving networks.
   gsvd.h : Eigen and singular value decomposition of graph adjacency matrix.
