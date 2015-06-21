@@ -1,6 +1,4 @@
-#include <queue>
 #include <utility>
-#include <vector>
 #include <set>
 namespace TSnap {
 
@@ -21,7 +19,7 @@ namespace TSnap {
 				// store new value in the sum vector
 				mem.AddDat(i, new_val);
 				//get the sum
-				TFlt deg_val = deg_dist.GetDat(i);
+				TFlt deg_val = (float)deg_dist.GetDat(i);
 				sum += (deg_val * new_val);
 			}
 		}
@@ -56,7 +54,7 @@ namespace TSnap {
 
   void MaxCPGreedy(const PNGraph& Graph, TIntH& GroupNodes, TIntFltVH& ResultVector, TFltV& MaxVector, bool& Unimodal, const int k) {
     // buildup container of group nodes
-    int br = 0;
+    // int br = 0;
     // number of nodes
     int N = Graph->GetNodes();
     // sum of contributions
@@ -148,9 +146,9 @@ namespace TSnap {
       // THashKeyDatI<TInt, TInt> FirstIndex = index.BegI();
       // Reset the choosen node
       // Main loop - start timer
-      double tm1, tm2;
-      TExeTm ExeTm;
-      tm1 = ExeTm.GetSecs();
+      // double tm1, tm2;
+      // TExeTm ExeTm;
+      // tm1 = ExeTm.GetSecs();
       ChoosenNode = -1;
       // Choosing the node - this takes in sum O(maxdeg) steps, or O(n) steps
       while (ChoosenNode == -1 && ChoosenDeg >= 0) {
@@ -166,8 +164,8 @@ namespace TSnap {
       }
 
       // Choosing node end timer
-      double tm4 = ExeTm.GetSecs();
-      double time4 = tm4 - tm1;
+      // double tm4 = ExeTm.GetSecs();
+      // double time4 = tm4 - tm1;
       if (ChoosenNode != -1) {
         ContributionsSum += ChoosenDeg;
         GroupNodes.AddDat(GroupNodesCounter, ChoosenNode);
@@ -197,8 +195,7 @@ namespace TSnap {
         TNGraph::TNodeI NI1 = Graph->GetNI(ChoosenNode);
 
         // DEBUG:
-        int outdeg = NI1.GetOutDeg();
-
+        
         // A) reduce contributionto in-degree nodes by 1 (or 2)
         for (int i = 0; i < NI1.GetInDeg(); i++) {
           int nei = NI1.GetInNId(i);
@@ -238,7 +235,7 @@ namespace TSnap {
               int n_out_in = n_out_ins[i];
               // DEBUG:
               // printf("\n %i -> %i <- %i", ChoosenNode, n_out, n_out_in);
-              int HistogramHashId = Nodes.GetDat(n_out_in);
+              // int HistogramHashId = Nodes.GetDat(n_out_in);
 
               // B.1 Delete in edges
               if (Graph->IsEdge(n_out_in, n_out)) {
@@ -259,8 +256,8 @@ namespace TSnap {
       Nodes.DelKey(ChoosenNode);
 
       // Main Loop end timer
-      double tm2 = ExeTm.GetSecs();
-      double time = tm2 - tm1;
+      // double tm2 = ExeTm.GetSecs();
+      // double time = tm2 - tm1;
 
       // Timer for CENTRALIZATION
       // DEBUG:
@@ -268,8 +265,8 @@ namespace TSnap {
       // DEBUG: ContributionsSum should be == to Covered.Len()
       double approx = 0;
       TFlt gdc2 = TSnap::GetGroupDegreeCentralization(N, Degs, GroupNodes, /*Covered.Len()*/ContributionsSum, GroupNodesCounter, mem, A, B, deg_distribution, approx);
-      double tm3 = ExeTm.GetSecs();
-      double time1 = tm3 - tm2;
+      // double tm3 = ExeTm.GetSecs();
+      // double time1 = tm3 - tm2;
 
       // PRINT OUT
       // printf("\n %i %i %i %i %f %f %i %f %f %f %f", GroupNodesCounter, ChoosenNode, ChoosenDeg, Degs.GetDat(ChoosenNode), ContributionsSum, ContributionsSum + GroupNodesCounter, N, gdc2, time, time1, time4);

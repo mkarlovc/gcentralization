@@ -78,7 +78,8 @@ int main(int argc, char* argv[]) {
       int id = VI.GetKey();
       fprintf(F, "%i ", id);
       for (int i = 0; i < vec.Len(); i++) {
-        fprintf(F, "%f ", vec[i]);
+        fprintf(F, "%f ", (float)vec[i]);
+
       }
 
     // centralization plot data
@@ -99,7 +100,7 @@ int main(int argc, char* argv[]) {
   // print the max result
   fprintf(F, "***\n");
   for (int i = 0; i < MaxVector.Len(); i++) {
-    fprintf(F, "%f ", MaxVector[i]);
+    fprintf(F, "%f ", (float)MaxVector[i]);
   }
   fprintf(F, "\nUnimodal: %s", Unimodal ? "true" : "false");
   fprintf(F, "\n***");
@@ -117,8 +118,7 @@ int main(int argc, char* argv[]) {
   GnuPlot.SavePng();*/
 
   printf("Done!\n");
-  system("pause");
-
+  
   Catch
     return 0;
 }
